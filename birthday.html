@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Happy Birthday!!!🎂</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, My Queen</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+
+    :root {
+      --bg-color-top: #dae7f5;
+      --bg-color-bottom: #58a0ed;
+      --container-bg-top: #e8e3e8;
+      --container-bg-bottom: #ce96d4;
+      --primary-text: #333;
+      --title-color: #2289f0;
+      --quote-color: #555;
+      --heart-color: #fc2d38;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-text);
+      background: linear-gradient(to bottom, var(--bg-color-top), var(--bg-color-bottom));
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5vh 5vw;
+      position: relative;
+      overflow: hidden;
+	  opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 58.5652vw;
+      width: 100%;
+	  height: 89vh;
+      padding: 2em;
+      background: linear-gradient(to top, var(--container-bg-bottom), var(--container-bg-top));
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: clamp(1rem, 4vw, 3.5rem);
+      margin-bottom: 0.5em;
+      color: var(--title-color);
+    }
+
+    p {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      line-height: 1.8em;
+      margin: 0.5em 0;
+    }
+
+    .quote {
+      font-style: italic;
+      margin-top: 2em;
+      color: var(--quote-color);
+    }
+
+    .heart {
+      font-size: 3em;
+      margin-top: 1em;
+      animation: pulse 1.5s infinite;
+      color: var(--heart-color);
+    }
+	
+	.heart-wrapper { 
+	  opacity: 0;
+	  position: relative;
+	  background-color: rgba(0,0,0,0.1);
+	  cursor: pointer;
+	  width: 4vw;
+	  height: 6vh;
+	  top: -3.5vw;
+	  left: 53vh;
+	  animation: pulse 1.5s infinite;
+      color: var(--heart-color);
+	  z-index: 20;
+    }
+	
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .bear {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 10vw;
+      z-index: 3;
+      animation: bearbounce 3s ease-in-out infinite;
+    }
+
+    @keyframes bearbounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px) scale(1.05); }
+    }
+
+    .stars-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    .star {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ffd700;
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 
+    68% 57%, 79% 91%, 50% 70%, 
+    21% 91%, 32% 57%, 2% 35%, 
+    39% 35%
+  );
+  box-shadow: 0 0 10px #ffd700;
+  animation: twinkle 2s infinite ease-in-out;
+  z-index: 10;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+	.star.fade-out {
+  animation: vanish 1s forwards;
+}
+
+@keyframes vanish {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 1.5; transform: scale(1.3); }
+  100% { opacity: 0; transform: scale(0); }
+}
+.final-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: white;
+  padding: 2em;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 90%;
+  background:linear-gradient(135deg,#fff0f6,#ffc7f8);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  animation: popup-appear 0.5s ease-out;
+}
+
+.popup-content h2 {
+  color: var(--title-color);
+}
+.popup-content button {
+  margin-top: 1em;
+  padding: 0.5em 1.5em;
+  background: var(--heart-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  animation: bounce-button 1.2s infinite;
+}
+button:hover {
+  transform: scale(1.1);
+  background: #fc5858;
+  color: black;
+  transition: all 0.3s ease;
+}
+.instructions {
+position: absolute;
+font-size: 12px;
+font-family: fantasy;
+ z-index: 10;
+ }
+ .skew-wrapper {
+  transform: skewX(10deg);
+}
+
+  .bounce-btn {
+  display: inline-block;
+  font-size: 1vw;
+  font-weight: bold;
+  font-family: 'Playfair Display';
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+.bounce-btn span {
+  display: inline-block;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+.bounce-btn span:nth-child(1)  { animation-delay: 0s; }
+.bounce-btn span:nth-child(2)  { animation-delay: 0.1s; }
+.bounce-btn span:nth-child(3)  { animation-delay: 0.2s; }
+.bounce-btn span:nth-child(4)  { animation-delay: 0.3s; }
+.bounce-btn span:nth-child(5)  { animation-delay: 0.4s; }
+.bounce-btn span:nth-child(6)  { animation-delay: 0.5s; }
+.bounce-btn span:nth-child(7)  { animation-delay: 0.6s; }
+.bounce-btn span:nth-child(8)  { animation-delay: 0.7s; }
+.bounce-btn span:nth-child(9)  { animation-delay: 0.8s; }
+.bounce-btn span:nth-child(10) { animation-delay: 0.9s; }
+.bounce-btn span:nth-child(11) { animation-delay: 1.0s; }
+.bounce-btn span:nth-child(12) { animation-delay: 1.1s; }
+.bounce-btn span:nth-child(13) { animation-delay: 1.2s; }
+.bounce-btn span:nth-child(14) { animation-delay: 1.3s; }
+.bounce-btn span:nth-child(15) { animation-delay: 1.4s; }
+.bounce-btn span:nth-child(16) { animation-delay: 1.5s; }
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+  @keyframes popup-appear {
+  0% { transform: scale(1); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1);opacity: 1; }
+}
+   
+    .heartshake {
+	   animation: shake 0.5s ease;
+	}
+	
+	@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s ease;
+}
+
+    .fade-out-page {
+      animation: blurOut 1s forwards;
+    }
+
+    @keyframes blurOut {
+      from {
+        opacity: 1;
+        filter: blur(0px);
+      }
+      to {
+        opacity: 0;
+        filter: blur(10px);
+      }
+      
+    }
+  </style>
+ <script>
+   window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+  const starMessages = [
+    "你知道吗？在浩瀚星海中，我最喜欢的那颗星是你 ✨",
+    "点击了一颗星，却点进了我的心 💖",
+    "每一颗星星都想为你闪烁，因为你比它们更耀眼 🌟",
+    "你是我的芊，我是你的元 这不刚好牵缘么？😊",
+    "愿你的世界被爱和温柔包围 💫",
+    "宇宙很大，我的心刚好全都给了你 💌",
+    "有你在，连银河都黯然失色 🌌",
+    "这颗星星想说：你是我永远的心动 💜",
+    "生日快乐，我的星星女王 👑",
+    "我想变成天上的星星，偷偷守护你每一个夜晚 🌠",
+    "你点亮了我所有的黑暗 💡",
+    "就像这颗星，我也在等你注意我 🤭",
+    "你是我永不熄灭的星愿 ⭐",
+    "在我心里，每颗星星都写着你的名字 📝",
+    "你就是我浪漫宇宙的中心 💫"
+  ];
+
+  let starsClicked = 0;
+  let finished = 0;
+
+function showMessage(index) {
+  alert(starMessages[index]);
+  
+  const sound = document.getElementById('sparkleSound');
+  sound.currentTime = 0;
+  sound.play();
+
+  const star = document.getElementById(`star${index + 1}`);
+  if (star) {
+    star.classList.add("fade-out");
+    setTimeout(() => {
+      star.style.display = "none";
+    }, 500);
+  }
+
+  starsClicked++;
+
+  if (starsClicked === 1) {
+    setTimeout(() => {
+      document.getElementById("finalPopup").style.display = "flex";
+	  finished = 1;
+    }, 500);
+	 
+  }
+    
+}
+
+function closePopup() {
+  document.getElementById("finalPopup").style.display = "none";
+}
+
+    function nextpage() {
+	  if (finished === 1) {
+        document.body.classList.add('fade-out-page');
+        setTimeout(() => {
+	      window.location.href = 
+		  "letter.html";
+        },1000);
+      }
+      else {
+          document.querySelectorAll('.star-wrapper').forEach(wrapper => {
+          wrapper.addEventListener('click', () => {
+          const star = wrapper.querySelector('.star');
+          star.classList.add('shake');
+          setTimeout(() => {
+          star.classList.remove('shake');
+    }, 500);
+  });
+});
+} 
+    }		
+
+    document.addEventListener('click', function startMusic() {
+        const audio = document.getElementById('bgm');
+        audio.play();
+        document.removeEventListener('click', startMusic); // 防止重复播放
+    });
+
+    const audio = document.getElementById('bgm');
+    audio.volume = 0.1;
+</script>
+</head>
+<body>
+ <div class="stars-container">
+  <!-- 上方 -->
+  <div class="star" id="star1" style="top: 3vh; left: 10vw; animation-delay: 0.2s;" onclick="showMessage(0)"></div>
+  <div class="star" id="star2" style="top: 2vh; left: 25vw; animation-delay: 0.5s;" onclick="showMessage(1)"></div>
+  <div class="star" id="star3" style="top: 15vh; left: 85vw; animation-delay: 1.0s;" onclick="showMessage(2)"></div>
+
+  <!-- 左边 -->
+  <div class="star" id="star4" style="top: 10vh; left: 2vw; animation-delay: 0.3s;" onclick="showMessage(3)"></div>
+  <div class="star" id="star5" style="top: 30vh; left: 11vw; animation-delay: 0.7s;" onclick="showMessage(4)"></div>
+  <div class="star" id="star6" style="top: 75vh; left: 4vw; animation-delay: 1.2s;" onclick="showMessage(5)"></div>
+
+  <!-- 右边（避开 bear 的右下角）-->
+  <div class="star" id="star7" style="top: 10vh; left: 95vw; animation-delay: 0.4s;" onclick="showMessage(6)"></div>
+  <div class="star" id="star8" style="top: 30vh; left: 94vw; animation-delay: 0.8s;" onclick="showMessage(7)"></div>
+  <div class="star" id="star9" style="top: 65vh; left: 92vw; animation-delay: 1.3s;" onclick="showMessage(8)"></div>
+
+  <!-- 下方（避开右下角 bear） -->
+  <div class="star" id="star10" style="top: 80vh; left: 10vw; animation-delay: 0.6s;" onclick="showMessage(9)"></div>
+  <div class="star" id="star11" style="top: 96vh; left: 30vw; animation-delay: 1.0s;" onclick="showMessage(10)"></div>
+  <div class="star" id="star12" style="top: 95vh; left: 70vw; animation-delay: 1.5s;" onclick="showMessage(11)"></div>
+
+  <!-- 四角补位 -->
+  <div class="star" id="star13" style="top: 50vh; left: 15vw; animation-delay: 0.2s;" onclick="showMessage(12)"></div>
+  <div class="star" id="star14" style="top: 50vh; left: 87vw; animation-delay: 0.9s;" onclick="showMessage(13)"></div>
+  <div class="star" id="star15" style="top: 53vh; left: 2vw; animation-delay: 0.7s;" onclick="showMessage(14)"></div>
+</div>
+  <!-- 正文内容 -->
+  <div class="container">
+    <h1>Happy Birthday, Qianqian</h1>
+    <p>On this day, a star was born<br>--------------------<br>
+    and many years later,<br>
+    she met someone who would never stop admiring her light.</p>
+    <p class="quote">“To the girl who makes every ordinary moment feel like magic—thank you for being you.”</p>
+	<div class="heart">❤</div>
+	<div class="heart-wrapper" onclick="nextpage()"></div>
+	<div class="skew-wrapper" style="top: 72vh;left: 23vw">
+  <div class="bounce-btn instructions" style="position: relative; left: 1vw; top: -4.5vh;">
+  <span>C</span><span>l</span><span>i</span><span>c</span><span>k</span><span> </span>
+  <span>a</span><span>l</span><span>l</span><span> </span>
+  <span>t</span><span>h</span><span>e</span><span> </span>
+  <span>s</span><span>t</span><span>a</span><span>r</span><span>s</span>
+</div>
+</div></div>
+	</div>
+	<div class="final-popup" id="finalPopup">
+       <div class="popup-content">
+       <h2>🎉 Happy 15th brithday！🎉</h2>
+       <p>Here's to celebrating every birthday with you<br>
+          Now and Forever,	 ✨<br>
+		  ❤️I love You❤️ </p>
+		  
+       <button onclick="closePopup()">Close</button>
+       </div>
+	   </div>
+     
+  <!-- 北极熊 -->
+  <img src="images/bear.png" class="bear" alt="Polar Bear with Cake" />
+  <audio id="bgm" src="audio/symphony.mp3" loop></audio>
+  <audio id="sparkleSound" src="audio/sparkle-355937.mp3"></audio>
+</body>
+</html> 
