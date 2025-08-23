@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+    <head>
+        <link rel="stylesheet" href="style/style-letter.css">
+        <title>The most sincere letter✉️</title>
+        <meta charset="UTF-8">
+        <script>
+            document.addEventListener('click', function startMusic() {  
+        const audio = document.getElementById('bgm');  
+        audio.play();  
+        document.removeEventListener('click', startMusic); // 防止重复播放  
+        });  
+            let isOpen = false;
+            function openpaper() {
+                document.getElementById("paper-id").style.display = "flex";
+                isOpen = true;
+                setTimeout(typeWriter, 1000);
+            }
+
+            function heartJump() {
+	  const heart = document.getElementById("heart");
+	  heart.classList.remove("jump");
+	  void heart.offsetWidth;
+	  heart.classList.add("jump");
+	}
+const texts = [
+`Dear Wong Zhi Qian , \n
+This is the very first love letter I have ever written to you. Your sudden 
+appearance disrupted my once ordinary and quiet life.Before you, I had no clear 
+goal — I was just drifting aimlessly. But you… you are truly wonderful. You are 
+beautiful, and this is not empty flattery, but something I feel deeply from my 
+heart. You are also so driven — you refuse to fall behind, always striving 
+forward. This is what I deeply admire about you.Since you came into my life, I feel 
+as if I have finally found the meaning of living. It may sound unbelievable, but it is 
+truly real. You have made me start trying harder, becoming more serious about life.`,
+`Whenever I feel like giving up, the thought of the future I wish to share with you immediately lifts me up and gives me strength. I have told myself countless times — you aretruly the most precious gift I have ever received.I know I am not perfect, I have my flaws and weaknesses, but I promise you this: I will always give my very best. I cannot guarantee that you will never face difficulties or sadness in the future, but I can promise that such pain will never come from me.I am serious — I truly wish for a future with you.Even if the road is full of challenges, even if we must wait for years, I am willing to walk beside you, hand in hand.
+
+Would you be willing too…?`
+];
+
+let page = 0;                         // 当前页 (0 或 1)
+const speed = 1;
+const idx = [0, 0];                   // 每一页的打字进度
+const finished = [false, false];      // 每一页是否打完
+
+function typeWriter() {
+  const el = document.getElementById(`letter-text${page + 1}`);
+  const t = texts[page];
+
+  if (idx[page] < t.length) {
+    const ch = t.charAt(idx[page]);
+    el.innerHTML += (ch === '\n') ? '\n' : ch;   // 保留换行
+    idx[page]++;
+    setTimeout(typeWriter, speed);
+  } else {
+    finished[page] = true;
+    // 打完当前页才显示“→”，但最后一页不显示
+    if (page < texts.length - 1) {
+      document.getElementById("next").style.display = "block";
+    }
+    // Last page show "next"
+    if (page === texts.length - 1) {
+      document.getElementById("nextBtn").style.display = "block";
+    }
+    if (page === 1){
+      document.getElementById("nextBtn").style.display = "block";
+    }
+  }
+}
+
+function showPage(num) {
+  // 隐藏所有页
+  document.querySelectorAll('.page').forEach(p => p.style.display = "none");
+
+  // 显示目标页
+  document.getElementById(`letter-text${num}`).style.display = "block";
+
+  // 更新圆点状态
+  document.getElementById("dot1").classList.toggle("active", num === 1);
+  document.getElementById("dot2").classList.toggle("active", num === 2);
+
+  // 按钮逻辑
+  if (num === 1) {
+    document.getElementById("prev").style.display = "none"; // 第1页没有 <
+    document.getElementById("next").style.display = finished[0] ? "block" : "none"; // 第1页打完才有 >
+    document.getElementById("nextBtn").style.display = "none"; // 第1页永远没有 Next
+  } else if (num === 2) {
+    document.getElementById("prev").style.display = "block"; // 第2页总有 <
+    document.getElementById("next").style.display = "none";  // 第2页没有 >
+    document.getElementById("nextBtn").style.display = finished[1] ? "block" : "none"; // 打完才有 Next
+  }
+
+  // 如果这页没打过，就打字
+  page = num - 1;
+  if (!finished[page]) {
+    typeWriter();
+  }
+}
+
+function openpaper() {
+  document.getElementById("paper-id").style.display = "flex";
+
+  page = 0; // 默认打开第一页
+
+  if (!finished[0]) {
+    // 第一次打开，第一页还没打完
+    setTimeout(typeWriter, 3000);
+  } else {
+    // 如果第一页已经打完
+    showPage(1);
+  }
+}
+
+
+function closeLetter() {
+  document.getElementById("paper-id").style.display = "none";
+  document.getElementById("nextBtn").style.display = "none";
+  document.getElementById("next").style.display = "none";
+  document.getElementById("prev").style.display = "none";
+}
+
+function nextPage(){
+  if (finished.every(v => v)){
+    window.location.href = "future.html"
+  }
+}
+
+
+        </script>
+    </head>
+    <body>
+        <div class="envelope">
+            <img src="images/Polar-Bear-icon.png" class="click-icon" alt="Polar Bear icon" onclick="openpaper()">
+           <!-- <div class="icon-wrapper" onclick="openpaper()"></div>-->
+            <div class="flap"></div>
+            <div class="envelope-wrapper" onclick="openEnvelope()"></div>
+            <div class="flap-bottom"></div>
+            <div class="body"></div>
+        </div>
+        <div class="letter">
+            <div class="letter-content">
+
+            </div>
+        </div>
+        <audio id="bgm" src="audio/blue.m4a" loop></audio>
+        <div class="zn1" >💌 嘿，我偷偷写了一封信给你哟~ (´｡• ᵕ •｡`) ♡</div> 
+        <div class="paper" id="paper-id">
+            <div class="paper-content">
+                <div class="eng1" >
+                    <!--Page1  -->
+                    <p id="letter-text1" class="page" style="position: absolute; top: 0vh; left: 2vw;"></p>
+                    <!--Page2-->
+                    <p id="letter-text2" class="page" style="position: absolute; top: 0vh; left: 2vw;"></p>
+                    <!--Arrows-->
+                    <div class="arrow prev" id="prev" onclick="showPage(1)" style="display: none;">❮</div>
+                    <div class="arrow next" id="next" onclick="showPage(2)" style="display: none;">❯</div>
+                    <!--Dot-->
+                    <div class="pagination">
+                        <span class="dot active" id="dot1" style="position: absolute; top: 110%; left: 47%"></span>
+                        <span class="dot" id="dot2" style="position: absolute; top: 110%; left: 53%;"></span>
+                    </div>
+                    <button id="nextBtn" onclick="closeLetter()" style="display: none; position: absolute; bottom: -8vh; right: 5vw;  " >Next></button>
+                </div>
+            </div>
+        </div>
+        <div class="heart-wrapper">
+    <div class="heart" onclick="heartJump();nextPage()" id="heart"></div>
+  </div>
+    </body>
+</html>
