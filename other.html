@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Other - 幕后展示</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(#0b0c2a, #000);
+      font-family: "Mozilla Headline", cursive;
+      color: #fff;
+      overflow-x: hidden;
+      opacity: 0; 
+      animation: fadeInBody 1.2s ease forwards;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; transform: scale(0.97); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      text-align: center;
+      padding: 5vh 0;
+      text-shadow: 0 0 20px #ff88cc;
+      font-size: 3vw;
+      animation: slideDown 1s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 相册 */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1vw;
+      justify-content: center;
+      padding: 2vh 5vw;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .gallery img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 0.5vw;
+      border: 2px solid #ff88cc;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff88cc;
+    }
+
+    /* 放大预览 (lightbox) */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeInLightbox 0.4s ease forwards;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 3px solid #ff88cc;
+      border-radius: 0.5vw;
+      transform: scale(0.8);
+      opacity: 0;
+      animation: zoomIn 0.4s ease forwards;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    @keyframes fadeInLightbox {
+      from { background: rgba(0,0,0,0); }
+      to   { background: rgba(0,0,0,0.9); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    /* 制作过程卡片 */
+    .process {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2vw;
+      padding: 5vh 5vw;
+    }
+
+    .card {
+      width: 300px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #ff88cc;
+      border-radius: 1vw;
+      padding: 2vh 2vw;
+      box-shadow: 0 0 20px rgba(255,136,204,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(255,136,204,0.7);
+    }
+
+    .card h2 {
+      font-size: 1.6vw;
+      text-align: center;
+      text-shadow: 0 0 10px #ff88cc;
+    }
+
+    .card p {
+      font-size: 1.2vw;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* 结尾 */
+    .ending {
+      text-align: center;
+      padding: 5vh 0;
+      font-size: 1.5vw;
+      color: #ffccff;
+      font-style: italic;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+      .card h2 { font-size: 5vw; }
+      .card p { font-size: 3.5vw; }
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ 幕后展示 ✨</h1>
+
+  <!-- 照片展示 -->
+  <div class="gallery">
+    <a href="#img1"><img src="images/1.jpeg" alt="pic1"></a>
+    <a href="#img2"><img src="images/2.jpeg" alt="pic2"></a>
+    <a href="#img3"><img src="images/3.jpeg" alt="pic3"></a>
+  </div>
+
+  <!-- 放大预览 -->
+  <div id="img1" class="lightbox">
+    <a href="#"><img src="images/1.jpeg"></a>
+  </div>
+  <div id="img2" class="lightbox">
+    <a href="#"><img src="images/2.jpeg"></a>
+  </div>
+  <div id="img3" class="lightbox">
+    <a href="#"><img src="images/3.jpeg"></a>
+  </div>
+
+  <!-- 制作过程 -->
+  <div class="process">
+    <div class="card">
+      <h2>💡 构思</h2>
+      <p>最初只是一个小小的想法，希望留下点属于她的独特回忆。</p>
+    </div>
+    <div class="card">
+      <h2>⏰ 用时</h2>
+      <p>零碎的晚上+日常花费，总共花了大概几个星期时间。（毕竟我只是初学者哈哈）</p>
+    </div>
+    <div class="card">
+      <h2>🛠 技术</h2>
+      <p>HTML / CSS / 一些简单的 JS 动画，让页面更有互动感。</p>
+    </div>
+    <div class="card">
+      <h2>💰 花费</h2>
+      <p>真正花费的几乎为零，最珍贵的成本其实是时间和心意。</p>
+    </div>
+  </div>
+
+  <div class="ending">
+    🌌 这一切，只是一个小小的开始…
+  </div>
+</body>
+</html>
