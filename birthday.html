@@ -281,6 +281,9 @@ font-family: fantasy;
     }
   </style>
  <script>
+	 if (document.reffer.indexOf("identity.html") === -1) {
+		 window.location.href = "identity.html";}
+	 
    window.addEventListener('load', () => {
       document.body.classList.add('loaded');
     });
@@ -430,6 +433,7 @@ function closePopup() {
 </body>
 
 </html> 
+
 
 
 
