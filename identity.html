@@ -306,14 +306,14 @@
 	  // 禁止右键菜单
     document.addEventListener("contextmenu", function(e){
         e.preventDefault();
-        alert("禁止右键操作哦 🌸");
+        alert("禁止右键操作 🌸");
     });
 
     // 禁止F12（开发者工具）
     document.addEventListener("keydown", function(e) {
         if (e.key === "F12") {
             e.preventDefault();
-            alert("不许偷看啦 🌝");
+            alert("你在尝试做什么？ 🌝");
         }
         if (e.ctrlKey && e.shiftKey && e.key === "I") {
             e.preventDefault();
@@ -407,6 +407,7 @@
 </body>
 
 </html>
+
 
 
 
