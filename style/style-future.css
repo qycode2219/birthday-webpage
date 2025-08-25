@@ -250,9 +250,9 @@
 }
 
 .future-note {
-	position: absolute;
-	left: 50%;
-	top: 80%;
+	position: relative;
+	/*left: 50%;
+	top: 80%;*/
     margin-top: 2vh;
     font-size: 1.2vw;
     text-align: center;
