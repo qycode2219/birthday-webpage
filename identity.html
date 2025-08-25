@@ -303,6 +303,24 @@
   </style>
 
   <script>
+	  // 禁止右键菜单
+    document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        alert("禁止右键操作哦 🌸");
+    });
+
+    // 禁止F12（开发者工具）
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "F12") {
+            e.preventDefault();
+            alert("不许偷看啦 🌝");
+        }
+        if (e.ctrlKey && e.shiftKey && e.key === "I") {
+            e.preventDefault();
+            alert("不许偷看啦 🌝");
+        }
+    });
+	  
     window.addEventListener('load', () => {
       document.body.classList.add('loaded');
     });
@@ -389,6 +407,7 @@
 </body>
 
 </html>
+
 
 
 
