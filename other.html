@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Other - 幕后展示</title>
+  <script>
+    document.addEventListener('click', function startMusic() {  
+        const audio = document.getElementById('bgm');  
+        audio.play();  
+        document.removeEventListener('click', startMusic); // 防止重复播放  
+        });  
+  </script>
   <style>
     body {
       margin: 0;
@@ -155,11 +162,7 @@
       .card h2 { font-size: 5vw; }
       .card p { font-size: 3.5vw; }
     }
-    document.addEventListener('click', function startMusic() {  
-        const audio = document.getElementById('bgm');  
-        audio.play();  
-        document.removeEventListener('click', startMusic); // 防止重复播放  
-        });  
+    
 
 
   </style>
@@ -213,4 +216,5 @@
 </body>
 
 </html>
+
 
