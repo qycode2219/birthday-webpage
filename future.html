@@ -7,6 +7,12 @@
 <html>
     
     <script>
+		document.addEventListener('click', function startMusic() {  
+        const audio = document.getElementById('bgm');  
+        audio.play();  
+        document.removeEventListener('click', startMusic); // 防止重复播放  
+        });  
+
         function heartJump(){
             
 	        const heart = document.getElementById("heart");
@@ -188,6 +194,7 @@ cards.forEach(card => {
         <audio id="bgm" src="audio/On The Floor.mp3" loop></audio>
 
 </html> 
+
 
 
 
