@@ -10,6 +10,8 @@
         audio.play();  
         document.removeEventListener('click', startMusic); // 防止重复播放  
         });  
+    const audio = document.getElementById("bgm");
+    audio.volume = 0.3;
   </script>
   <style>
     body {
@@ -223,6 +225,7 @@
 </body>
 
 </html>
+
 
 
 
