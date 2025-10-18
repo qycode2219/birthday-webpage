@@ -70,6 +70,11 @@ cards.forEach(card => {
     card.style.transform = `rotate(${angle}deg)`;
 });
 }
+		function gotoNamePage() {
+  const btn = document.querySelector('.name-btn');
+  btn.style.transform = 'scale(0.8)';
+  setTimeout(() => window.location.href = 'name.html', 200);
+}
     </script>
     <body>
         <div class="heart-wrapper" >
@@ -193,8 +198,9 @@ cards.forEach(card => {
 <div class="Btnnextpage" style="position: absolute; top: 10vh; right: 10vw;" onclick="nextpage()" id="Nextpage">End</div>
     </body>
         <audio id="bgm" src="audio/OnTheFloor.mp3" loop></audio>
-
+<button class="name-btn" onclick="gotoNamePage()"></button>
 </html> 
+
 
 
 
