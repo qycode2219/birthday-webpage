@@ -455,7 +455,7 @@
 }
 
 .name-btn::after {
-  content: "💖";
+  content: "Back";
   font-size: 3vh;
   color: white;
   position: absolute;
